@@ -1,26 +1,40 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Navbar from './components/Navbar'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 
-function App() {
+import Home from './components/Home';
+import Succcess from './components/Success'
+class App extends React.Component {
+  state = {
+    mobile:false
+  }
+  toggleMenu = () =>{ 
+    let mobile = !this.state.mobile;
+    this.setState({mobile})
+  } 
+  render() { 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container-fluid primaryBackground">
+       
+
+      <Router>
+        <Navbar toggleMenu={this.toggleMenu} mobile={this.state.mobile}/>
+        <Switch>
+          <Route path="/" component={Home} exact />
+          <Route path="/success" component={Succcess} exact/>
+         
+         
+        </Switch>
+
+    </Router>
     </div>
   );
+  }
 }
 
 export default App;

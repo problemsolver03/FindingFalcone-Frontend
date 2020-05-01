@@ -1,38 +1,194 @@
-.App {
-  text-align: center;
+body {
+  font-family: "Baloo Bhaina 2", cursive;
+  background-color: #f5f5f5;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Merriweather", serif;
+}
+.header {
+  color: #f77f00;
+}
+.logoStyle {
+  position: relative;
+  z-index: 1;
+  color: #333;
+  font-weight: 500;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.primaryBackground {
+  background-image: url(/images/bg.png);
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-size: contain;
+  background-size: 50%;
+}
+.customPadding {
+  padding: 0 30px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.header {
+  padding-top: 50px;
+}
+
+.choice {
+  padding: 20px;
+  box-shadow: 2px 2px 6px #eaeaea;
+  background: #fff;
+}
+
+.choice small,
+.choice span {
+  display: inline-block;
+  vertical-align: middle;
+}
+.choice small {
+  font-size: 14px;
+}
+.choice h3 span {
+  font-size: 32px;
+  color: #d62828;
+  padding: 5px 20px;
+  border: 1px solid #d62828;
+}
+
+.vehicleList {
+  padding-left: 0;
+}
+.vehicleList li {
+  list-style: none;
+}
+
+.vehicle b {
+  display: block;
+  line-height: 1em;
+}
+.nav-link {
+  color: #fff;
+}
+
+option:disabled {
+  background-color: #ccc;
+}
+
+.vehicleList li {
+  border: 1px solid #ccc;
+  padding: 10px 10px 5px 10px;
+  position: relative;
+  margin-bottom: -1px;
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.vehicleList li.active {
+  background-color: #000000;
+  color: #fff;
+}
+
+.vehicleList li:hover {
+  background-color: #dadada;
+}
+label {
+  margin-bottom: 0;
+}
+.vehicleList label {
+  padding-left: 5px;
+  vertical-align: text-top;
+}
+.vehicleList input {
+  width: 17px;
+  height: 17px;
+}
+.choice h3 {
+  margin-bottom: 0;
+}
+.vehicleList li span.count {
+  position: absolute;
+  right: 10px;
+}
+.successHolder {
+  height: 70vh;
+}
+
+.btn-rounded {
+  border-radius: 35px;
+  font-family: "Merriweather", serif;
+  font-size: 18px;
+  padding: 10px 20px;
+  background-color: #eb7d26;
+  border-color: #eb7d26 !important;
+}
+.btn-rounded:hover {
+  background-color: #e46e15;
+  border-color: #eb7d26 !important;
+}
+
+.time {
+  position: absolute;
+  margin-top: -23px;
+  right: 35px;
+}
+
+.submitHolder {
+  padding: 50px 0;
+}
+
+.orange {
+  color: #d62b29;
+}
+b.available {
+  position: absolute;
+  right: 10px;
+  top: 15px;
+  background: #d62b29;
+  color: #fff;
+  padding: 8px 12px 6px 12px;
+  border-radius: 4px;
+}
+
+.hide{
+  display: none;
+}
+
+
+.mobileMenu.show {
+  position: fixed;
+    background-color: #000000dc;
+    width: 100vw;
+    height: 100vh;
+    display: block !important;
+    top: 0;
+    z-index: 1;
+    left: 0;
+}
+
+.mobileMenu ul{
+  padding-left: 0;
+}
+.mobileMenu li{
+  list-style: none;
+  padding: 10px;
+  background: #000000;
+}
+.mobileMenu li a,.mobileMenu li span{
+  color: #fff;
+  cursor: pointer;
+}
+
+
+@media (min-width:320px) and (max-width:700px){
+  .primaryBackground {
+    background-size:70%;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .navbar-toggler{
+    background-color: #333;
+    padding: 10px;
   }
-  to {
-    transform: rotate(360deg);
+  .navbar-toggler img{
+    width: 20px;
   }
 }
