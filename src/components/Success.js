@@ -1,4 +1,5 @@
 import React from "react";
+import endpoints from '../config'
 
 class Success extends React.Component {
   constructor(props) {
@@ -12,7 +13,8 @@ class Success extends React.Component {
     }
   }
   componentDidMount() {
-    console.log(this.props);
+    
+    let { tokenAPI,findFalconeAPI} = endpoints
 
     let planets = this.props.location.state.planets;
     let vehicles = [];
@@ -20,14 +22,14 @@ class Success extends React.Component {
       vehicles.push(vehicle.name);
     }
     console.log(planets);
-    fetch("https://findfalcone.herokuapp.com/token", {
+    fetch(tokenAPI, {
       method: "POST",
       headers: { Accept: "application/json" }
     })
       .then(res => res.json())
       .then(response => {
         if (response.token !== undefined) {
-          fetch("https://findfalcone.herokuapp.com/find", {
+          fetch(findFalconeAPI, {
             method: "POST",
             headers: {
               Accept: "application/json",
@@ -65,7 +67,7 @@ class Success extends React.Component {
                 {this.state.response.status === "success" ? (
                   <div>
                     <h1 className="header">Success!</h1>
-                    <p className="lead">
+                     <p className="lead">
                       It's a hit falcone has been found on{" "}
                       <b className="orange">
                         {this.state.response.planet_name}

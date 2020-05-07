@@ -1,0 +1,46 @@
+
+.nav-link {
+    color: #fff;
+  }
+  
+.hide {
+    display: none;
+  }
+  
+  .mobileMenu.show {
+    position: fixed;
+    background-color: #000000dc;
+    width: 100vw;
+    height: 100vh;
+    display: block !important;
+    top: 0;
+    z-index: 1;
+    left: 0;
+  }
+  
+  .mobileMenu ul {
+    padding-left: 0;
+  }
+  .mobileMenu li {
+    list-style: none;
+    padding: 10px;
+    background: #000000;
+  }
+  .mobileMenu li a,
+  .mobileMenu li span {
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  @media (min-width: 320px) and (max-width: 700px) {
+    .primaryBackground {
+      background-size: 70%;
+    }
+    .navbar-toggler {
+      background-color: #333;
+      padding: 10px;
+    }
+    .navbar-toggler img {
+      width: 20px;
+    }
+  }

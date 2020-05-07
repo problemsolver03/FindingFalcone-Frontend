@@ -1,2 +1,27 @@
 application is hosted at
 https://findingfalcone.herokuapp.com/
+
+
+Good attempt at solving the problem. The UI is very well designed.
+** Thank you :)
+
+Areas of Improvement:
+
+**Done removed code repetition of choice component
+Code repetition could have been avoided for the Choice component
+
+**Done added a config file and loading api endpoints from there
+Hard-coding of the API url could be avoided
+
+**Done have broken down several components into smaller pieces and moved the respective css into respective components
+The components could have been broken down further to make it more reusable and improve maintainability
+
+**Done fixed this issue
+The app seems to show incorrect values for vehicles if one selects value for the drop-downs and then does a reset plan
+
+Additional stuff
+Tried writing a few basic tests
+
+Earning more badges will improve your score.
+If you need help to earn those badges read 
+this -> https://help.geektrust.in/category/10-how-we-evaluate-your-code.

@@ -1,6 +1,7 @@
 import React from "react";
-import Header from "./Header";
-import Choice from "./Choice";
+import Header from "./Common/Header";
+import Choice from "./Choice/Choice";
+import endpoints from "../config";
 
 class Home extends React.Component {
   constructor(props) {
@@ -11,18 +12,21 @@ class Home extends React.Component {
       selectedPlanets: [],
       selectedVehicles: [],
       loading: false,
-      error: false
+      error: false,
     };
   }
 
-  selectPlanet = () => {
+  selectPlanet = (e) => {
     let selectedPlanets = document.getElementsByClassName("planets");
-    let planets = this.state.selectedPlanets;
+    let planets = [];
+
     for (let i = 0; i < selectedPlanets.length; i++) {
-      if (selectedPlanets[i].value !== "") {
-        planets.push(selectedPlanets[i].value);
+      let planetName = selectedPlanets[i].value;
+      if (planetName !== "") {
+        planets.push(planetName);
       }
     }
+
     let removeDuplicates = new Set(planets);
     let cleanPlanetsArray = [...removeDuplicates];
 
@@ -30,7 +34,7 @@ class Home extends React.Component {
   };
 
   selectVehicle = (prevShip, currentShip) => {
-    console.log(prevShip, currentShip);
+
     let selectedVehicles = [...this.state.vehicles];
     if (!prevShip) {
       for (let vehcile of selectedVehicles) {
@@ -38,7 +42,8 @@ class Home extends React.Component {
           --vehcile.total_no;
         }
       }
-    } else {
+    }
+    else {
       for (let vehcile of selectedVehicles) {
         if (vehcile.name === currentShip) {
           --vehcile.total_no;
@@ -48,33 +53,45 @@ class Home extends React.Component {
       }
     }
     this.setState({ selectedVehicles });
-  };
+  }
+
+  resetVehicleState = (ship) => {
+   
+    let selectedVehicles = [...this.state.vehicles];
+    for (let vehcile of selectedVehicles) {
+      if (vehcile.name === ship) {
+           ++vehcile.total_no;
+      }
+    }
+    this.setState({ selectedVehicles });
+  }
 
   componentDidMount() {
-    fetch("https://findfalcone.herokuapp.com/planets")
-      .then(res => res.json())
-      .then(response => {
+    let { planetsAPI, vehiclesAPI } = endpoints;
+    fetch(planetsAPI)
+      .then((res) => res.json())
+      .then((response) => {
         if (response.length > 0) {
           this.setState({ planets: response });
         } else {
           this.setState({ error: true });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         this.setState({ error: true });
       });
 
-    fetch("https://findfalcone.herokuapp.com/vehicles ")
-      .then(res => res.json())
-      .then(response => {
+    fetch(vehiclesAPI)
+      .then((res) => res.json())
+      .then((response) => {
         if (response.length > 0) {
           this.setState({ vehicles: response });
         } else {
           this.setState({ error: true });
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.error(err);
         this.setState({ error: true });
       });
@@ -85,7 +102,7 @@ class Home extends React.Component {
     let planets = [...this.state.planets];
     this.setState(
       { vehicles: [], planets: [], selectedPlanets: [], selectedVehciles: [] },
-      function() {
+      function () {
         this.setState({ vehicles, planets });
       }
     );
@@ -96,8 +113,8 @@ class Home extends React.Component {
       pathname: "/success",
       state: {
         planets: this.state.selectedPlanets,
-        vehicles: this.state.selectedVehicles
-      }
+        vehicles: this.state.selectedVehicles,
+      },
     });
   };
 
@@ -111,42 +128,21 @@ class Home extends React.Component {
           ) : null}
           {this.state.planets.length > 0 ? (
             <React.Fragment>
-              <Choice
-                planets={this.state.planets}
-                vehicles={this.state.vehicles}
-                option={1}
-                selectPlanet={this.selectPlanet}
-                planetsSelected={this.state.selectedPlanets}
-                selectedVehciles={this.state.selectedVehicles}
-                selectVehicle={this.selectVehicle}
-              />
-              <Choice
-                planets={this.state.planets}
-                vehicles={this.state.vehicles}
-                option={2}
-                selectPlanet={this.selectPlanet}
-                planetsSelected={this.state.selectedPlanets}
-                selectedVehciles={this.state.selectedVehicles}
-                selectVehicle={this.selectVehicle}
-              />
-              <Choice
-                planets={this.state.planets}
-                vehicles={this.state.vehicles}
-                option={3}
-                selectPlanet={this.selectPlanet}
-                planetsSelected={this.state.selectedPlanets}
-                selectedVehciles={this.state.selectedVehicles}
-                selectVehicle={this.selectVehicle}
-              />
-              <Choice
-                planets={this.state.planets}
-                vehicles={this.state.vehicles}
-                option={4}
-                selectPlanet={this.selectPlanet}
-                planetsSelected={this.state.selectedPlanets}
-                selectedVehciles={this.state.selectedVehicles}
-                selectVehicle={this.selectVehicle}
-              />
+              {Array.from({ length: 4 }).map((arr, i) => {
+                return (
+                  <Choice
+                    planets={this.state.planets}
+                    vehicles={this.state.vehicles}
+                    option={i + 1}
+                    selectPlanet={this.selectPlanet}
+                    planetsSelected={this.state.selectedPlanets}
+                    selectedVehciles={this.state.selectedVehicles}
+                    selectVehicle={this.selectVehicle}
+                    resetVehicleState={this.resetVehicleState}
+                    key={i}
+                  />
+                );
+              })}
             </React.Fragment>
           ) : null}
         </div>

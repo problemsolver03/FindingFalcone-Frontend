@@ -1,0 +1,47 @@
+.vehicleList {
+    padding-left: 0;
+  }
+  .vehicleList li {
+    list-style: none;
+  }
+  
+  .vehicle b {
+    display: block;
+    line-height: 1em;
+  }
+  .vehicleList li {
+    border: 1px solid #ccc;
+    padding: 10px 10px 5px 10px;
+    position: relative;
+    margin-bottom: -1px;
+    transition-property: all;
+    transition-duration: 0.3s;
+  }
+  
+  .vehicleList li.active {
+    background-color: #000000;
+    color: #fff;
+  }
+  
+  .vehicleList li:hover {
+    background-color: #dadada;
+  }
+  
+label {
+    margin-bottom: 0;
+  }
+  .vehicleList label {
+    padding-left: 5px;
+    vertical-align: text-top;
+  }
+  .vehicleList input {
+    width: 17px;
+    height: 17px;
+  }
+  .choice h3 {
+    margin-bottom: 0;
+  }
+  .vehicleList li span.count {
+    position: absolute;
+    right: 10px;
+  }

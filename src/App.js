@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import Navbar from './components/Navbar'
+import Navbar from './components/Common/Navbar/Navbar'
 import {
   BrowserRouter as Router,
   Switch,
@@ -20,17 +20,12 @@ class App extends React.Component {
   render() { 
   return (
     <div className="container-fluid primaryBackground">
-       
-
       <Router>
         <Navbar toggleMenu={this.toggleMenu} mobile={this.state.mobile}/>
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/success" component={Succcess} exact/>
-         
-         
         </Switch>
-
     </Router>
     </div>
   );

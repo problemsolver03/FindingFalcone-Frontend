@@ -1,33 +1,38 @@
 import React from "react";
+import './vehicle.css'
 
 class Vehicles extends React.Component {
   state = {
     activePlanet: null,
     suitableVehicles: [],
     activeShip: null,
-    timetaken: null
+    timetaken: null,
   };
 
-  componentDidMount() {
+  componentWillReceiveProps() {
+    
     let { option, planets } = this.props;
 
-    let seletectedShip = document.getElementsByClassName("planets")[option - 1]
-      .value;
-    if (seletectedShip !== "") {
+    let seletectedPlanet = document.getElementsByClassName("planets")[
+      option - 1
+    ].value;
+    if (seletectedPlanet !== "" && this.state.activeShip === null) {
       for (let planet of planets) {
-        if (planet.name === seletectedShip) {
+        if (planet.name === seletectedPlanet) {
           this.setState({ activePlanet: planet });
         }
       }
+    } else if (seletectedPlanet !== this.state.activePlanet) {      
+      this.setState({ activeShip: null, timetaken: null });
     }
   }
 
-  seletShip = (ship, timetaken) => {
+  seletShip = (ship, timetaken,elem) => {
     this.state.activeShip === null
       ? this.props.selectVehicle(false, ship)
       : this.props.selectVehicle(this.state.activeShip, ship);
-
     this.setState({ activeShip: ship, timetaken: timetaken });
+    this.props.getShip(ship,elem)
   };
 
   render() {
@@ -38,7 +43,7 @@ class Vehicles extends React.Component {
         {this.state.activePlanet !== null ? (
           <>
             <label>
-              Choose Ship
+              Choose Ship{" "}
               <small>
                 to travel {this.state.activePlanet.distance} megamiles
               </small>
@@ -53,9 +58,7 @@ class Vehicles extends React.Component {
                 return (
                   <li
                     key={i}
-                    className={
-                      ship.name === this.state.activeShip ? "active" : ""
-                    }
+                   
                   >
                     <input
                       type="radio"
@@ -71,7 +74,8 @@ class Vehicles extends React.Component {
                       onClick={() =>
                         this.seletShip(
                           ship.name,
-                          this.state.activePlanet.distance / ship.speed
+                          this.state.activePlanet.distance / ship.speed,
+                          `choice${option}${i}`
                         )
                       }
                     />

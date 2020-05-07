@@ -34,81 +34,8 @@ h6 {
 .header {
   padding-top: 50px;
 }
-
-.choice {
-  padding: 20px;
-  box-shadow: 2px 2px 6px #eaeaea;
-  background: #fff;
-}
-
-.choice small,
-.choice span {
-  display: inline-block;
-  vertical-align: middle;
-}
-.choice small {
-  font-size: 14px;
-}
-.choice h3 span {
-  font-size: 32px;
-  color: #d62828;
-  padding: 5px 20px;
-  border: 1px solid #d62828;
-}
-
-.vehicleList {
-  padding-left: 0;
-}
-.vehicleList li {
-  list-style: none;
-}
-
-.vehicle b {
-  display: block;
-  line-height: 1em;
-}
-.nav-link {
-  color: #fff;
-}
-
 option:disabled {
   background-color: #ccc;
-}
-
-.vehicleList li {
-  border: 1px solid #ccc;
-  padding: 10px 10px 5px 10px;
-  position: relative;
-  margin-bottom: -1px;
-  transition-property: all;
-  transition-duration: 0.3s;
-}
-
-.vehicleList li.active {
-  background-color: #000000;
-  color: #fff;
-}
-
-.vehicleList li:hover {
-  background-color: #dadada;
-}
-label {
-  margin-bottom: 0;
-}
-.vehicleList label {
-  padding-left: 5px;
-  vertical-align: text-top;
-}
-.vehicleList input {
-  width: 17px;
-  height: 17px;
-}
-.choice h3 {
-  margin-bottom: 0;
-}
-.vehicleList li span.count {
-  position: absolute;
-  right: 10px;
 }
 .successHolder {
   height: 70vh;
@@ -140,55 +67,4 @@ label {
 .orange {
   color: #d62b29;
 }
-b.available {
-  position: absolute;
-  right: 10px;
-  top: 15px;
-  background: #d62b29;
-  color: #fff;
-  padding: 8px 12px 6px 12px;
-  border-radius: 4px;
-}
 
-.hide{
-  display: none;
-}
-
-
-.mobileMenu.show {
-  position: fixed;
-    background-color: #000000dc;
-    width: 100vw;
-    height: 100vh;
-    display: block !important;
-    top: 0;
-    z-index: 1;
-    left: 0;
-}
-
-.mobileMenu ul{
-  padding-left: 0;
-}
-.mobileMenu li{
-  list-style: none;
-  padding: 10px;
-  background: #000000;
-}
-.mobileMenu li a,.mobileMenu li span{
-  color: #fff;
-  cursor: pointer;
-}
-
-
-@media (min-width:320px) and (max-width:700px){
-  .primaryBackground {
-    background-size:70%;
-  }
-  .navbar-toggler{
-    background-color: #333;
-    padding: 10px;
-  }
-  .navbar-toggler img{
-    width: 20px;
-  }
-}
